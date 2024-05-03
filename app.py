@@ -8,6 +8,12 @@ from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import numpy as np
 
+import platform
+from matplotlib import font_manager, rc
+plt.rcParams['axes.unicode_minus'] = False
+if platform.system() == 'Linux':
+    rc('font', family='NanumGothic')
+
 def main() :
     st.title('K-Means 클러스터링 앱')
     st.text('csv 파일을 업로드 하면, 비슷한 유형의 데이터끼리 묶어주는 앱입니다.')
@@ -107,8 +113,8 @@ def main() :
             fig1 = plt.figure()
             X = np.arange(1, 10+1)
             plt.plot(X, wcss)
-            plt.title('The Elbow Mehtod')
-            plt.xlabel('Number of Clusters')
+            plt.title('엘보우 메소드')
+            plt.xlabel('클러스터의 갯수')
             plt.ylabel('WCSS')
             st.pyplot(fig1)
 
